@@ -8,5 +8,5 @@
 - Prefer <350 lines per source module and hard ceiling 400 except documented generated embedded ACL scripts.
 - First make behavior work with a failing test, then improve types/structure, then verify the built package. Separate concurrent writes by explicit task scopes.
 - Do not start a replacement DSH server or restart the current-session host for verification. User profile edits or local install outside workspace require approval.
-- Reference clones and intermediate files are ignored under .ref/.tmp, never distributed. Record decisions and actual gates in WORK_LOG.md.
+- Reference clones and intermediate files are ignored under .ref/.tmp, never distributed. Keep WORK_LOG.md to decisions, lessons and gate results; no dated step-by-step diary.
 - commit 、注释等说明文本优先使用简体中文
