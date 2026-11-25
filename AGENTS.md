@@ -3,10 +3,13 @@
 ## 技术栈与验证
 
 - 源码和测试均使用 TypeScript，统一配置位于 `vite.config.ts`。
-- 常用命令：
-  - `pnpm test`：运行测试（`vp test`）。
-  - `pnpm lint`：运行包含类型感知检查的静态检查（`vp lint`）。
-  - `pnpm build`：构建发布包（`vp pack`，使用 tsdown）。
+- 日常命令一律优先走 npm scripts（`pnpm <script>`），不要直接调用底层二进制。
+  - `pnpm test`：运行测试（脚本内是 `vp test`）。
+  - `pnpm lint`：运行包含类型感知检查的静态检查（脚本内是 `vp lint`）。
+  - `pnpm build`：构建发布包（脚本内是 `vp pack`，使用 tsdown）。
+  - `pnpm check`：完整门禁，串起 lint + typecheck + test + build。
+  - 脚本名或参数需要变动时，改 `package.json` 的 `scripts`，不要绕过脚本直接调 `vp` / `vpr` / `./node_modules/.bin/*`。
+  - 仅当 pnpm 自身不可用（例如非 TTY 下触发依赖自检失败）时，才退化到 `./node_modules/.bin/` 直接执行，并在结论里说明原因。
 - 开发顺序：先编写能复现问题的失败测试并使行为正确，再改进类型与结构，最后验证构建产物。
 - 并发修改必须明确划分任务范围，避免交叉写入。
 

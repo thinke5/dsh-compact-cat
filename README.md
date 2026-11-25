@@ -25,10 +25,10 @@ pnpm typecheck     # tsc --noEmit
 pnpm test          # vp test
 pnpm lint          # vp lint，含类型检查
 pnpm build         # vp pack，生成宿主与客户端产物到 lib/
-pnpm check         # lint + typecheck + test + build + size-check
+pnpm check         # lint + typecheck + test + build
 ```
 
-源文件建议 350 行以内，硬上限 400 行（`pnpm check:size` 校验）。说明文本与提交信息使用简体中文。
+不设单文件行数上限：按职责拆分模块即可，门禁不再校验文件体积。说明文本与提交信息使用简体中文。
 
 ## 致谢
 
