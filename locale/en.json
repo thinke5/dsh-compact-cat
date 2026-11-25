@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Compact Cat",
+    "description": "In-place context compaction with configurable policies and per-cut inspection.",
+    "detail": "README.md"
+  }
+}

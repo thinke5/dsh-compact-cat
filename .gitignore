@@ -1,0 +1,9 @@
+node_modules/
+lib/
+.cache/
+.pnpm-store/
+.ref/
+.tmp/
+coverage/
+*.tgz
+.DS_Store

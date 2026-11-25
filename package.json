@@ -1,0 +1,101 @@
+{
+  "name": "dsh-compact-cat",
+  "version": "0.1.0",
+  "description": "可配置、可观察的 DeepSeek Harness 原位上下文压缩插件",
+  "keywords": [
+    "compaction",
+    "context",
+    "dsh-plugin",
+    "typescript"
+  ],
+  "license": "MIT",
+  "bin": {
+    "dsh-compact-cat": "./lib/cli.js"
+  },
+  "files": [
+    "lib",
+    "locale",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./engine": "./lib/engine.js",
+    "./gate": "./lib/gate.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "typecheck": "tsc --noEmit",
+    "test": "vp test",
+    "lint": "vp lint",
+    "fmt": "vp fmt",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm check:size",
+    "check:size": "vpx scripts/size-check.ts",
+    "watch": "vp pack --watch",
+    "dev": "vp pack --watch",
+    "pack": "vp pack",
+    "pack:tarball": "pnpm build && pnpm pack"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.1.0",
+    "@deepseek-ai/dsh-compaction": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-compaction-basic": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-llm": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-session": "0.2.2-rc.5",
+    "@deepseek-ai/schemastery": "3.19.0",
+    "@types/node": "^24",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.3",
+    "vite-plus": "1.7.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-compaction": ">=0.2.0-rc.2 <0.3.0",
+    "@deepseek-ai/dsh-compaction-basic": ">=0.2.0-rc.2 <0.3.0",
+    "@deepseek-ai/dsh-llm": ">=0.2.0-rc.2 <0.3.0",
+    "@deepseek-ai/dsh-session": ">=0.2.0-rc.2 <0.3.0",
+    "@deepseek-ai/schemastery": ">=3.18.0 <4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.0-rc.2 <0.3.0",
+    "node": "^22.19 || >=24"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-plugin-manager",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  }
+}

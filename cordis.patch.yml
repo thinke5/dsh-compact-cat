@@ -1,0 +1,9 @@
+# Replace stock once. Preset takeover and safe fallback are owned by the entry.
+- id: compaction-basic
+  name: "@deepseek-ai/dsh-compaction-basic"
+  disabled: true
+- insert:
+    - id: compaction-spine
+      name: dsh-compact-cat
+      config:
+        takeoverPresets: true
