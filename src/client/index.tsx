@@ -16,7 +16,10 @@ export interface ClientContext {
   };
   slots: {
     inject(name: string, register: () => Disposable): Disposable;
-    register(options: { name: string; key: string; locale?: string }, component: ComponentType): Disposable;
+    register(
+      options: { name: string; key: string; locale?: string },
+      component: ComponentType,
+    ): Disposable;
   };
   sidebarRightTabs?: { register(definition: unknown): Disposable };
   inject(services: string[], callback: (context: ClientContext) => Disposable): Disposable;

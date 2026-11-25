@@ -6,16 +6,16 @@ DeepSeek Harness 原位上下文压缩插件。当前为**基础骨架**：保�
 
 ## 现状
 
-| 模块 | 状态 |
-| --- | --- |
-| `src/host/entry.ts` | 薄入口：解析配置、构造引擎；引擎加载失败时回退原版压缩 |
-| `src/host/adapter.ts` | 上游 DSH 依赖的唯一收敛点 |
-| `src/host/gate.ts` | 预设接管闸门骨架，仅记录开关，不重写预设 |
-| `src/engine/index.ts` | 引擎骨架，直接继承原版压缩引擎 |
-| `src/config/` | 插件私有配置键（`takeoverPresets`、`inspectorEnabled`）与 schema |
-| `src/client/index.tsx` | 客户端占位侧栏，渲染为空 |
-| `src/cli.ts` | 命令行骨架 |
-| `tests/` | 配置解析的单元测试 |
+| 模块                   | 状态                                                             |
+| ---------------------- | ---------------------------------------------------------------- |
+| `src/host/entry.ts`    | 薄入口：解析配置、构造引擎；引擎加载失败时回退原版压缩           |
+| `src/host/adapter.ts`  | 上游 DSH 依赖的唯一收敛点                                        |
+| `src/host/gate.ts`     | 预设接管闸门骨架，仅记录开关，不重写预设                         |
+| `src/engine/index.ts`  | 引擎骨架，直接继承原版压缩引擎                                   |
+| `src/config/`          | 插件私有配置键（`takeoverPresets`、`inspectorEnabled`）与 schema |
+| `src/client/index.tsx` | 客户端占位侧栏，渲染为空                                         |
+| `src/cli.ts`           | 命令行骨架                                                       |
+| `tests/`               | 配置解析的单元测试                                               |
 
 ## 开发
 
