@@ -1,12 +1,28 @@
-# Compact Cat engineering
+# Compact Cat 工程约定
 
-- Source and tests are TypeScript. Use `pnpm test` (`vp test`), `pnpm lint` (`vp lint`, type-aware), `pnpm build` (`vp pack`, tsdown). Unified configuration lives in `vite.config.ts`.
-- Preserve original Live Compact safety contracts: immutable cached prefix, most recent checkpoint floor, genuine user boundary, balanced tool pairs, verified raw backup before pruning or cutting, complete failure diagnostics, fail closed on disk/ACL errors before small cuts and pruning; stock official summary keeps its original best-effort backup behavior.
-- Default settings preserve v1.1.12 behavior. New policy belongs in `src/config`; no per-process environment mutation for engine preferences.
-- `spine-checkpoint` and shadow layout stay compatible. External plugins must not call the experimental session-record writer. Inspector metadata belongs in the existing protected decision sidecar; never interrupt adjacency between `compaction/summary` and the replacement message.
-- Client uses host-provided React and UI primitives; never bundle a second host runtime. Use optional capability injection and lifecycle disposers for settings/sidebar/routes. Only fetch original text on demand; render it as text, not HTML.
-- Prefer <350 lines per source module and hard ceiling 400 except documented generated embedded ACL scripts.
-- First make behavior work with a failing test, then improve types/structure, then verify the built package. Separate concurrent writes by explicit task scopes.
-- Do not start a replacement DSH server or restart the current-session host for verification. User profile edits or local install outside workspace require approval.
-- Reference clones and intermediate files are ignored under .ref/.tmp, never distributed. Keep WORK_LOG.md to decisions, lessons and gate results; no dated step-by-step diary.
-- commit 、注释等说明文本优先使用简体中文
+## 技术栈与验证
+
+- 源码和测试均使用 TypeScript，统一配置位于 `vite.config.ts`。
+- 常用命令：
+  - `pnpm test`：运行测试（`vp test`）。
+  - `pnpm lint`：运行包含类型感知检查的静态检查（`vp lint`）。
+  - `pnpm build`：构建发布包（`vp pack`，使用 tsdown）。
+- 开发顺序：先编写能复现问题的失败测试并使行为正确，再改进类型与结构，最后验证构建产物。
+- 并发修改必须明确划分任务范围，避免交叉写入。
+
+## 客户端约束
+
+- 使用宿主提供的 React 和 UI 基础组件，不得打包第二份宿主运行时。
+- 设置、侧栏与路由采用可选能力注入，并提供生命周期清理机制。
+- 仅按需获取原始文本，且必须按文本渲染，不得作为 HTML 渲染。
+
+## 代码与文档规范
+
+- 提交信息、注释等说明文本优先使用简体中文。
+- `WORK_LOG.md` 仅记录决策、经验教训和质量门禁结果，不写带日期的逐步流水账。
+
+## 工作区与运行环境
+
+- 参考仓库克隆与中间文件放在已忽略的 `.ref/`、`.tmp/` 下，不得随发布包分发。
+- 验证时不得启动替代 DSH 服务，也不得重启当前会话的宿主。
+- 修改用户配置，或在工作区外进行本地安装，必须先获得批准。
